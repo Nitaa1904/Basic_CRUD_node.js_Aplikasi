@@ -1,0 +1,29 @@
+{
+  "name": "new-folder",
+  "version": "1.0.0",
+  "description": "nita dokumen",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "hehe": "node index.js",
+    "test": "belajar fsw 2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "fsw"
+  },
+  "keywords": [
+    "fullstack"
+  ],
+  "author": "nita",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "morgan": "^1.10.0",
+    "prisma": "^5.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

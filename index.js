@@ -1,0 +1,1 @@
+console.log("Kamu lagi apa?")
