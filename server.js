@@ -20,6 +20,35 @@ app.get('/nita', (req, res) => {
     })
 })
 
+
+// membuat API dengan postman
+//  /api/v1/(collection) => collectionya harus jamak (s)
+app.get('/api/v1/cars', (req, res) => {
+    try {
+        const cars = JSON.parse(
+            // membaca file cars.json
+            fs.readFileSync(`${__dirname}/assets/data/cars.json`, "utf-8")
+        );
+        // proses api
+        res.status(200).json({
+            status: "sukses",
+            message: "ping succes",
+            isSuccess: true,
+            // panggil data
+            data: cars,
+        })
+        // jika eror
+    } catch (error) {
+        res.status(500).json({
+            status: "error",
+            message: "failed",
+            error: error.message
+        });
+    }
+})
+
+
+
 // middlware / handler
 
 app.use((req, res, next) => {
