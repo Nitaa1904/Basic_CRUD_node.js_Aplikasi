@@ -2,6 +2,7 @@
 const fs = require("fs");
 // Pengganti http
 const express = require("express");
+const { status } = require("express/lib/response");
 
 // Memanggil express jadi aplikasi
 const app = express();
@@ -83,6 +84,37 @@ app.post('/api/v1/cars', (req, res) => {
                     car: newCar,
                 },
             });
+        }
+    });
+});
+
+
+
+// row query (mengambil spesifik data)
+app.get('/api/v1/cars/:id', (req, res) => { // request url parameter dinamis
+    // select * from table where id="1" OR NAME="Nita"
+    const id = req.params.id * 1; // * 1 akan menjadi number
+    console.log(id); // pemanggilan id, jika manggil nama aja gak usah pake .id
+    // array method
+    const car = cars.find(i => i.id === id); // tipe data yang sama
+    
+        // basic eror handling
+        if(!cars) {
+            console.log("gak ada data");
+            return res.status(404).json({
+                status: "failed",
+                message: `Failed get data this id : ${id}`,
+                isSuccess: false,
+                data: null,
+            });
+        }
+
+    res.status(200).json({
+        status: "sucses",
+        message: "succes",
+        isSuccess: true,
+        data: {
+            car,
         }
     });
 });
