@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+const {Product} = require('./models');
 //middleware untuk membaca json dari request body
 app.use(express.json());
 
@@ -21,6 +22,7 @@ const cars = JSON.parse(
 );
 
 app.get("/api/v1/cars", (req, res) => {
+
   res.status(200).json({
     status: "Success",
     message: "Success get cars data",
@@ -77,23 +79,33 @@ app.get("/api/v1/cars/:id", (req, res) => {
     });
 });
 
+// Mengupdate data tertentu
 app.patch("/api/v1/cars/:id", (req, res) => {
   //UPDATE ... FROM =(table) WHERE id=req.param.id
   const id = req.params.id * 1;
 
+  console.log(req.body.name);
+  console.log(req.body.year);
+  console.log(req.body.type);
+
+  // object destructuring
+  const {name, year, type} = req.body
+
   //mencari data by id
   const car = cars.find((i) => i.id === id);
-  //mencari index 
+  console.log(car);
+
+  //mencari data index 
   const carIndex = cars.findIndex((i) => i.id === id)
+  // console.log(carIndex);
 
   //update sesuai request bodynya (client/frontend)
   //object assign = menggunakan objek spread operator
-
   cars[carIndex] = {...cars[carIndex], ...req.body};
-
 
   //get new data for response API | sesuai kebutuhan ga harus
   const newCar = cars.find((i) => i.id === id);
+
 
   if(!car){
     return res.status(404).json({

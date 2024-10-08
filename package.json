@@ -19,9 +19,16 @@
   "author": "nita",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "morgan": "^1.10.0",
-    "prisma": "^5.20.0"
+    "mysql2": "^3.11.3",
+    "pg": "^8.13.0",
+    "pg-hstore": "^2.3.4",
+    "prisma": "^5.20.0",
+    "sequelize": "^6.37.4",
+    "sequelize-cli": "^6.6.2",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
