@@ -1,3 +1,4 @@
+CONFIG
 1. create directory untuk project nya
 
 // initialisasi node js project nya, install package2 yg digunakan d project nya

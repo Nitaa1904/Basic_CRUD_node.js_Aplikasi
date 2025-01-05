@@ -1,1 +1,1 @@
-console.log("Kamu lagi apa?")
+console.log("Kamu lagi apa yah?");
