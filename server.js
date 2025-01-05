@@ -176,7 +176,7 @@ app.delete("/api/v1/cars/:id", (req, res) => {
 
 // 5. Middleware
 //middleware / handler untuk url yang tidak dapat diakses karena memang tidak ada di aplikasi
-// membuat middleware = our own middleware
+
 app.use((req, res, next) => {
   res.status(404).json({
     status: "Failed",
