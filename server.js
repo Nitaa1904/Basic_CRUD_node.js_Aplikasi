@@ -11,11 +11,18 @@ const { Product } = require("./models");
 app.use(express.json());
 
 // 4. routing
-// default = health check
+// default url (health-check)
 app.get("/", (req, res) => {
   res.status(200).json({
     status: "Success",
     message: "Application is running good..",
+  });
+});
+// kalau HTTP module kan if(req.url == /"nita") {}
+app.get("/nita", (req, res) => {
+  res.status(200).json({
+    status: "Success",
+    message: "Ping Successfully !",
   });
 });
 
@@ -167,6 +174,7 @@ app.delete("/api/v1/cars/:id", (req, res) => {
   );
 });
 
+// 5. Middleware
 //middleware / handler untuk url yang tidak dapat diakses karena memang tidak ada di aplikasi
 // membuat middleware = our own middleware
 app.use((req, res, next) => {
