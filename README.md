@@ -18,9 +18,20 @@
 
 ### get by id
 
-1. -
+1. - 3.
 
 - cek di postman
 - localhost:3000/api/v1/cars/:id
 - di params ganti idnya sesuai kebutuhan
 - send
+
+### patch
+
+4.  untuk beberapa data aja (kalau put untuk keseluruhan data)
+
+- localhost:3000/api/v1/cars/:id
+-
+
+### delete
+
+11.

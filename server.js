@@ -107,40 +107,42 @@ app.get("/api/v1/cars/:id", (req, res) => {
   });
 });
 
-// Mengupdate data tertentu
+// 4) Update data tertentu
 app.patch("/api/v1/cars/:id", (req, res) => {
   //UPDATE ... FROM =(table) WHERE id=req.param.id
   const id = req.params.id * 1;
 
+  // pemanggilan secara biasa (redundan)
   console.log(req.body.name);
   console.log(req.body.year);
   console.log(req.body.type);
 
-  // object destructuring
+  // 6) object destructuring
   const { name, year, type } = req.body;
 
-  //mencari data by id
+  // 7) mencari data by id
   const car = cars.find((i) => i.id === id);
-  console.log(car);
+  // console.log(car);
 
-  //mencari data index
+  // 8) mencari data index
   const carIndex = cars.findIndex((i) => i.id === id);
   // console.log(carIndex);
 
-  //update sesuai request bodynya (client/frontend)
+  // 9) update sesuai request bodynya (client/frontend)
   //object assign = menggunakan objek spread operator
   cars[carIndex] = { ...cars[carIndex], ...req.body };
 
-  //get new data for response API | sesuai kebutuhan ga harus
+  // 11) get new data for response API | sesuai kebutuhan ga harus
   const newCar = cars.find((i) => i.id === id);
 
   if (!car) {
+    // 5) Buat respon status
     return res.status(404).json({
       status: "Failed",
       message: "API not exist!!",
     });
   }
-  //MASUKIN/ REWRITE DATA JSON dalam file
+  // 10) Masukin/ Rewrite Dsta JSON dalam file
   fs.writeFile(
     `${__dirname}/assets/data/cars.json`,
     JSON.stringify(cars),
@@ -157,6 +159,7 @@ app.patch("/api/v1/cars/:id", (req, res) => {
   );
 });
 
+// 11) delete
 app.delete("/api/v1/cars/:id", (req, res) => {
   const id = req.params.id;
 
@@ -165,8 +168,10 @@ app.delete("/api/v1/cars/:id", (req, res) => {
   //mencari index
   const carIndex = cars.findIndex((i) => i.id === id);
 
-  //melakukan penghapusan data sesuai index nya = req.params.id
+  //13) penghapusan data sesuai index nya = req.params.id
   cars.splice(carIndex, 1);
+
+  // 12) error handling
   if (!car) {
     return res.status(404).json({
       status: "Failed",
