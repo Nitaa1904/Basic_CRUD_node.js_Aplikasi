@@ -7,7 +7,8 @@ const app = express();
 const port = 3000;
 
 const { Product } = require("./models");
-//middleware untuk membaca json dari request body
+
+// c. buat middleware untuk membaca json dari request body dari client
 app.use(express.json());
 
 // 4. routing
@@ -26,37 +27,48 @@ app.get("/nita", (req, res) => {
   });
 });
 
-///api.v1/(collection nya ) => collection nya ini harus JAMAK (s)
+// b. Panggil Json (buat JSON di assets/data)
 const cars = JSON.parse(
+  // c. define dinamis direktori baca data
   fs.readFileSync(`${__dirname}/assets/data/cars.json`, "utf-8")
 );
 
+// a. Rest API
+//api.v1/(collection nya ) => collection nya ini harus JAMAK (s)
 app.get("/api/v1/cars", (req, res) => {
   res.status(200).json({
     status: "Success",
     message: "Success get cars data",
     isSuccess: true,
+    // e. tambahkan total data
     totalData: cars.length,
+    // d. panggil data
     data: {
       cars,
     },
   });
 });
 
+// f. API create data
 app.post("/api/v1/cars", (req, res) => {
-  //insert into...
+  //insert into... (saat di sql)
 
+  // g. data baru dengan method push
   const newCar = req.body;
   cars.push(newCar);
 
+  // h. mwrite ke databasenya (menulis/menimpa data baru)
   fs.writeFile(
     `${__dirname}/assets/data/cars.json`,
+    // argumen harus string json
     JSON.stringify(cars),
+    // callback
     (err) => {
       res.status(201).json({
         status: "Success",
         message: "Success add new car data",
         isSuccess: true,
+        // data baru
         data: {
           car: newCar,
         },
@@ -176,7 +188,6 @@ app.delete("/api/v1/cars/:id", (req, res) => {
 
 // 5. Middleware
 //middleware / handler untuk url yang tidak dapat diakses karena memang tidak ada di aplikasi
-
 app.use((req, res, next) => {
   res.status(404).json({
     status: "Failed",
