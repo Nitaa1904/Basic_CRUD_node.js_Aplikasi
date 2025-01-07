@@ -77,15 +77,18 @@ app.post("/api/v1/cars", (req, res) => {
   );
 });
 
+// 1) Get by id
 app.get("/api/v1/cars/:id", (req, res) => {
-  //select * from fsw2 where id="1" or NAME = "Irpan"
+  //select * from fsw2 where id="1" or NAME = "Nita"
   const id = req.params.id * 1;
   console.log(id);
 
+  // 2) gunakan array method find
   const car = cars.find((i) => i.id === id);
 
-  //salah satu basic error handling
+  //3) respon lebih dari satu (salah satu basic error handling)
   if (!car) {
+    // jika car tidak ada
     return res.status(404).json({
       status: "Failed",
       message: `Failed get car data this id : ${id}`,
@@ -93,7 +96,7 @@ app.get("/api/v1/cars/:id", (req, res) => {
       data: null,
     });
   }
-
+  // berhasil
   res.status(200).json({
     status: "Success",
     message: "Success get car data by id",
