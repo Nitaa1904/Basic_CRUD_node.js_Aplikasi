@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+Langkah2
 ## 1. Basic SetUp Node js Express (server.js)
 
 ## a. Rest API (server.js)
@@ -46,7 +46,13 @@
 - diterminal lakukan create model dan migrasion file untuk koneksi ke tabel (sequelize model:generate --name product --attributes name:string,price:float,stock:integer)
   a) koneksi ke database (panggil model di server.js)
   b) buat api baru
-=======
+
+
+
+
+
+
+
 ### Judul Project: **NodeAPI Starter: Building a Simple Backend with Express and Sequelize**
 
 ### Deskripsi:
@@ -90,4 +96,4 @@ Langkah-langkah utama dalam proyek ini meliputi:
   - Data produk dan transaksi yang dapat diakses melalui API.
 
 Proyek ini memberikan fondasi yang kuat untuk pengembangan backend dengan teknologi modern, memadukan konsep-konsep dasar dan praktik terbaik dalam pengembangan aplikasi server-side.
->>>>>>> 324fafb45a00a1b601beebe444790229910d80aa
+
