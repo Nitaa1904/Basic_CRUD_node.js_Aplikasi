@@ -35,3 +35,13 @@
 ### delete
 
 11.
+
+## Database (ORM) (belum fix)
+
+- npm i pg pg-hstore sequelize
+- sequelize init => menghasilkan folder(config, model, seeders)
+- create database.js di config (pindah isi config.js ke database.js dan tambahkan module.exports diawal)
+- di models ubah dari config.js menjadi database.js (const config = require(\_\_dirname + "/../config/database.js")[env];)
+- diterminal lakukan create model dan migrasion file untuk koneksi ke tabel (sequelize model:generate --name product --attributes name:string,price:float,stock:integer)
+  a) koneksi ke database (panggil model di server.js)
+  b) buat api baru

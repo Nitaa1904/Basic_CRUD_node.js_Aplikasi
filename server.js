@@ -6,10 +6,27 @@ const express = require("express"); // atau const http = require("http"); jika m
 const app = express();
 const port = 3000;
 
-const { Product } = require("./models");
+// a) panggil model
+const { Products } = require("./models");
 
 // c. buat middleware untuk membaca json dari request body dari client
 app.use(express.json());
+
+// b) API baru untuk model
+app.get("/api/v1/products", (req, res) => {
+  // proses baca API
+  Products.findAll().then((products) => {
+    res.status(200).json({
+      status: "Success",
+      message: "Success get products data",
+      isSuccess: true,
+      totalData: products.length,
+      data: {
+        products,
+      },
+    });
+  });
+});
 
 // 4. routing
 // default url (health-check)
